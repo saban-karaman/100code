@@ -1,4 +1,4 @@
-from art import logo
+from bid_art import logo
 print(logo)
 bid_dic = {}
 def bid(name, price):
