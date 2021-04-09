@@ -1,4 +1,4 @@
-from art import logo
+from calculator_logo import logo
 print(logo)
 def plus(number_1, number_2):
   return number_1 + number_2
