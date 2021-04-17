@@ -1,4 +1,4 @@
-from art import logo
+from blackjack_logo import logo
 import random
 cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 game = input("Do you want a black jack card game ? enter 'y' or 'n' \n").lower()
