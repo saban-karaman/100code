@@ -14,7 +14,6 @@ def asign():
   x = data[a]
   del(data[a])
   return x
-
 # def compare(a, b):
 #   if a["follower_count"] > b["follower_count"]:
 #     a = a
@@ -51,5 +50,5 @@ while True:
           print(f"Sorry, you lose. Your Score {i}")
           break
     elif i == 48:
-      print("you are a Legend")
+      print("you are a Legend 😎")
       break
