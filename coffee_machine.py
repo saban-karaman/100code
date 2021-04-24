@@ -72,7 +72,7 @@ def paid(a):
         print("bon apetite")
     elif total > menu[a]["cost"]:
         money += menu[a]["cost"]
-        print(f"bon apetite, your change  ${round(total - menu[a]['cost'])}")
+        print(f"bon apetite, your change  ${round(total - menu[a]['cost']), 2}")
     elif total < menu[a]["cost"]:
         print(f"{a} cost ${menu[a]['cost']}, Sorry that's not enougf money. Money refunded")
 def choose(a):
@@ -92,12 +92,12 @@ def repo():
 Coffee: {resources['coffee']}g\n Money: ${money}")
 continue_ = True
 while continue_:
-    desired = input("What would you like? espresso, latte, cappucino ").lower()
+    desired = input("What would you like? espresso, latte, cappuccino ").lower()
     if desired == "off":
         break
     elif desired == "report":
         repo()
-    elif desired == "espresso":
+    elif desired == "espresso" or desired == "latte" or desired == "cappuccino":
         repo()
         check(a=desired)
         if continue_ == False:
@@ -106,21 +106,21 @@ while continue_:
         paid(a=desired)
         repo()
         print(f"Here is your {desired}. Enjoy!")
-    elif desired == "latte":
-        repo()
-        check(a=desired)
-        if continue_ == False:
-            break
-        choose(a=desired)
-        paid(a=desired)
-        repo()
-        print(f"Here is your {desired}. Enjoy!")
-    elif desired == "cappuccino":
-        repo()
-        check(a=desired)
-        if continue_ == False:
-            break
-        choose(a=desired)
-        paid(a=desired)
-        repo()
-        print(f"Here is your {desired}. Enjoy!")
+  #  elif desired == "latte":
+  #      repo()
+  #      check(a=desired)
+  #      if continue_ == False:
+  #          break
+  #      choose(a=desired)
+  #      paid(a=desired)
+  #      repo()
+  #      print(f"Here is your {desired}. Enjoy!")
+  #  elif desired == "cappuccino":
+  #      repo()
+  #      check(a=desired)
+  #      if continue_ == False:
+  #          break
+  #      choose(a=desired)
+  #      paid(a=desired)
+  #      repo()
+  #      print(f"Here is your {desired}. Enjoy!")
