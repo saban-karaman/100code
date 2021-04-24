@@ -34,17 +34,28 @@ def check(a):
     global resources
     global menu
     global continue_
-    if menu[a]["ingredients"]["water"] > resources["water"]:  
-        print("Sorry that's not enough water")
-        continue_ = False
-    elif menu[a]["ingredients"]["milk"] > resources["milk"]:
-        print("Sorry that's not enough milk")
-        continue_ = False
-    elif menu[a]["ingredients"]["coffee"] > resources["coffee"]:
-        print("Sorry that's not enough coffee")
-        continue_ = False
+    if a == "espresso":
+        if menu[a]["ingredients"]["water"] > resources["water"]:  
+            print("Sorry that's not enough water")
+            continue_ = False
+        elif menu[a]["ingredients"]["coffee"] > resources["coffee"]:
+            print("Sorry that's not enough coffee")
+            continue_ = False
+        else:
+            continue_ = True
     else:
-        continue_ = True
+        if menu[a]["ingredients"]["water"] > resources["water"]:  
+            print("Sorry that's not enough water")
+            continue_ = False
+        elif menu[a]["ingredients"]["coffee"] > resources["coffee"]:
+            print("Sorry that's not enough coffee")
+            continue_ = False
+        elif menu[a]["ingredients"]["milk"] > resources["milk"]:
+            print("Sorry that's not enough milk")
+            continue_ = False
+        else:
+            continue_ = True
+
 def paid(a):
     global resources
     global menu
@@ -57,8 +68,7 @@ def paid(a):
     total = (0.25 * quart) + (0.10 * dimes) + (0.05 * nick) + (0.01 * penn)
     if total == menu[a]["cost"]:
         money += total
-        print(f" Water: {resources['water']}ml\n Milk: {resources['milk']}ml\n \
-Coffee: {resources['coffee']}g\n Money: ${money}")
+        repo()
         print("bon apetite")
     elif total > menu[a]["cost"]:
         money += menu[a]["cost"]
@@ -77,30 +87,40 @@ def choose(a):
         resources["water"] -= 250
         resources["coffee"] -= 24
         resources["milk"] -= 100
-
+def repo():
+    print(f" Water: {resources['water']}ml\n Milk: {resources['milk']}ml\n \
+Coffee: {resources['coffee']}g\n Money: ${money}")
 continue_ = True
 while continue_:
     desired = input("What would you like? espresso, latte, cappucino ").lower()
     if desired == "off":
         break
     elif desired == "report":
-        print(f" Water: {resources['water']}ml\n Milk: {resources['milk']}ml\n \
-Coffee: {resources['coffee']}g\n Money: ${money}")
+        repo()
     elif desired == "espresso":
+        repo()
         check(a=desired)
         if continue_ == False:
             break
         choose(a=desired)
         paid(a=desired)
+        repo()
+        print(f"Here is your {desired}. Enjoy!")
     elif desired == "latte":
+        repo()
         check(a=desired)
         if continue_ == False:
             break
         choose(a=desired)
         paid(a=desired)
+        repo()
+        print(f"Here is your {desired}. Enjoy!")
     elif desired == "cappuccino":
+        repo()
         check(a=desired)
         if continue_ == False:
             break
         choose(a=desired)
         paid(a=desired)
+        repo()
+        print(f"Here is your {desired}. Enjoy!")
