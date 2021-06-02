@@ -1,3 +1,4 @@
+from os import write
 from tkinter import *
 import pandas
 import random
@@ -28,6 +29,8 @@ canvas.grid(row=0, column=0, columnspan=2)
 french = pandas.read_csv("flash_card/data/french_words.csv")
 french_dict = {row.French: row.English for (index, row) in french.iterrows()}
 words = ""
+learn_french = {}
+word = [i for i in french_dict.keys()]
 
 def screen_eng():
     global words
@@ -36,15 +39,21 @@ def screen_eng():
     canvas.itemconfig(canvas_img, image=back_img)
     
 def screen_fr():
-    global words, flip_timer
-    window.after_cancel(flip_timer)
-    word = [i for i in french_dict.keys()]
-    canvas.itemconfig(card_title, text="French", fill="Black")
-    words = random.choice(word)
-    canvas.itemconfig(card_word, text=words, fill="Black")  
-    canvas.itemconfig(canvas_img, image=front_img)
-    flip_timer = window.after(ms=3000, func=screen_eng)
-
+    global words, flip_timer, learn_french, word
+    try:
+        window.after_cancel(flip_timer)
+        canvas.itemconfig(card_title, text="French", fill="Black")
+        words = random.choice(word)
+        canvas.itemconfig(card_word, text=words, fill="Black")  
+        canvas.itemconfig(canvas_img, image=front_img)
+        flip_timer = window.after(ms=3000, func=screen_eng)
+        d = {words:french_dict[words]}
+        learn_french.update(d)
+        word.remove(words)
+        file_learn_french = pandas.DataFrame.from_dict(learn_french, orient="index")
+        file_learn_french.to_csv("flash_card/data/learn_french.csv") 
+    except:
+        canvas.itemconfig(card_word, text="Congrat! You Leaarn All words", fill="Black") 
     
     
 flip_timer = window.after(ms=3000, func=screen_eng)
