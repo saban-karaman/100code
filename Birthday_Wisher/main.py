@@ -3,7 +3,7 @@ import datetime as dt
 import random
 import smtplib
 my_email = "ex100code@gmail..com"
-password = "Nurdan90."
+password = "Ankara06."
 
 with open("Birthday_Wisher/quotes.txt", "r", encoding="utf-8") as message:
     monday_message = message.readlines()
