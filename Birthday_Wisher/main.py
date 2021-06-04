@@ -2,7 +2,7 @@
 import datetime as dt
 import random
 import smtplib
-my_email = "ex100code@gmail..com"
+my_email = "ex100code@gmail.com"
 password = "Ankara06."
 
 with open("Birthday_Wisher/quotes.txt", "r", encoding="utf-8") as message:
@@ -21,7 +21,7 @@ def send_message():
 now = dt.datetime.now()
 day_of_week = now.weekday()
 
-if day_of_week == 3:
+if day_of_week == 4:
     print(day_message)
     send_message()
 
